@@ -157,7 +157,7 @@ function Navbar() {
               ))}
             </Box>
           )}
-          <Box sx={{ flexGrow: 0 }}>
+          <Box className="navBtnContainer" sx={{ flexGrow: 0 }}>
             <Tooltip>
               {user ? (
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
