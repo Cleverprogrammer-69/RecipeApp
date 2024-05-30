@@ -1,7 +1,7 @@
 
 import { useAuthContext } from "../hooks/useAuthContext";
 
-export const url="http://localhost:4000"
+export const url="https://recipes-api-yudj.onrender.com"
 
 export const fetchAllRecipes = async (dispatch,user) => {
   

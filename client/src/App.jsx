@@ -20,13 +20,12 @@ function App() {
       {location.pathname !== "/welcome" && <Navbar />}
       <div className="pages">
         <Routes>
-          <Route
-            path="/welcome"
-            element={<Welcome />}
-          />
+          <Route path="/welcome" element={<Welcome />} />
           <Route
             path="*"
-            element={!user ? <Navigate to="/welcome" /> : <Navigate to="/feed" />}
+            element={
+              !user ? <Navigate to="/welcome" /> : <Navigate to="/feed" />
+            }
           />
           <Route
             path="/login"
