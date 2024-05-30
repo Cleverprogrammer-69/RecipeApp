@@ -17,14 +17,14 @@ function App() {
   // const Navigate=useNavigate()
   return (
     <>
-      {location.pathname !== "/welcome" && <Navbar />}
+      {location.pathname !== "/" && <Navbar />}
       <div className="pages">
         <Routes>
-          <Route path="/welcome" element={<Welcome />} />
+          <Route path="/" element={<Welcome />} />
           <Route
             path="*"
             element={
-              !user ? <Navigate to="/welcome" /> : <Navigate to="/feed" />
+              !user ? <Navigate to="/" /> : <Navigate to="/feed" />
             }
           />
           <Route
@@ -37,19 +37,19 @@ function App() {
           />
           <Route
             path="/feed"
-            element={user ? <Feed /> : <Navigate to="/welcome" />}
+            element={user ? <Feed /> : <Navigate to="/" />}
           />
           <Route
             path="/profile"
-            element={user ? <Profile /> : <Navigate to="/welcome" />}
+            element={user ? <Profile /> : <Navigate to="/" />}
           />
           <Route
             path="/newpost"
-            element={user ? <NewPost /> : <Navigate to="/welcome" />}
+            element={user ? <NewPost /> : <Navigate to="/w" />}
           />
           <Route
             path="/editrecipe/:id"
-            element={user ? <RecipeEdit /> : <Navigate to="/welcome" />}
+            element={user ? <RecipeEdit /> : <Navigate to="/" />}
           />
         </Routes>
       </div>
