@@ -1,20 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-// import Home from './pages/Home'
+import Welcome from './pages/Welcome'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
 import Profile from './pages/Profile'
 import NewPost from './pages/NewPost'
-import {useAuthContext} from './hooks/useAuthContext'
 import RecipeEdit from './pages/RecipeEdit'
-import Welcome from './pages/Welcome'
-// import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from './hooks/useAuthContext'
+
 function App() {
-  const {user}=useAuthContext()
-  const location=useLocation()
-  // const Navigate=useNavigate()
+  const { user, dispatch } = useAuthContext()
+  const location = useLocation()
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'))
+    if (storedUser) {
+      dispatch({ type: 'LOGIN', payload: storedUser })
+    }
+  }, [dispatch])
+
+  const renderRoute = (path, element, redirectTo = '/') => (
+    <Route
+      path={path}
+      element={user ? element : <Navigate to={redirectTo} />}
+    />
+  )
+
   return (
     <>
       {location.pathname !== "/" && <Navbar />}
@@ -35,26 +48,14 @@ function App() {
             path="/signup"
             element={!user ? <Signup /> : <Navigate to="/feed" />}
           />
-          <Route
-            path="/feed"
-            element={user ? <Feed /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/profile"
-            element={user ? <Profile /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/newpost"
-            element={user ? <NewPost /> : <Navigate to="/w" />}
-          />
-          <Route
-            path="/editrecipe/:id"
-            element={user ? <RecipeEdit /> : <Navigate to="/" />}
-          />
+          {renderRoute('/feed', <Feed />)}
+          {renderRoute('/profile', <Profile />)}
+          {renderRoute('/newpost', <NewPost />)}
+          {renderRoute('/editrecipe/:id', <RecipeEdit />)}
         </Routes>
       </div>
     </>
-  );
+  )
 }
 
 export default App
