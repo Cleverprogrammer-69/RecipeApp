@@ -66,10 +66,10 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="fixed" sx={{ background: "#C72C48" }}>
+    <AppBar position="fixed" sx={{ background: "#1E1E2E" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <FastfoodIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <FastfoodIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: "#5F6BFF" }} />
           <Typography
             variant="h6"
             noWrap
@@ -81,7 +81,7 @@ function Navbar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "#E5E5E5",
               textDecoration: "none",
             }}
           >
@@ -97,7 +97,7 @@ function Navbar() {
                 onClick={handleOpenNavMenu}
                 color="inherit"
               >
-                <MenuIcon />
+                <MenuIcon sx={{ color: "#E5E5E5" }} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -115,17 +115,23 @@ function Navbar() {
                 onClose={() => setAnchorElNav(null)}
                 sx={{
                   display: { xs: "block", md: "none" },
+                  background: "#2D2D44",
+                  color: "#E5E5E5",
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
+                  <MenuItem
+                    key={page}
+                    onClick={() => handleCloseNavMenu(page)}
+                    sx={{ color: "#E5E5E5" }}
+                  >
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
           )}
-          <FastfoodIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <FastfoodIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1, color: "#5F6BFF" }} />
           <Typography
             variant="h5"
             noWrap
@@ -138,7 +144,7 @@ function Navbar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "#E5E5E5",
               textDecoration: "none",
             }}
           >
@@ -150,7 +156,7 @@ function Navbar() {
                 <Button
                   key={page}
                   onClick={() => handleCloseNavMenu(page)}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{ my: 2, color: "#E5E5E5", display: "block" }}
                 >
                   {page}
                 </Button>
@@ -164,8 +170,8 @@ function Navbar() {
                   <Avatar
                     className="avatar"
                     sx={{
-                      bgcolor: "#F7E9A3",
-                      color: "#C72C48",
+                      bgcolor: "#5F6BFF",
+                      color: "#E5E5E5",
                       fontWeight: "800",
                       borderRadius: "50%",
                     }}
@@ -175,17 +181,33 @@ function Navbar() {
                 </IconButton>
               ) : (
                 <div className="navBtnContainer">
-                  <button className="userBtns" onClick={signupHandler}>
+                  <button
+                    className="userBtns"
+                    onClick={signupHandler}
+                    style={{
+                      backgroundColor: "#5F6BFF",
+                      color: "#E5E5E5",
+                      border: "2px solid #5F6BFF",
+                    }}
+                  >
                     Signup
                   </button>
-                  <button className="userBtns" onClick={loginHandler}>
+                  <button
+                    className="userBtns"
+                    onClick={loginHandler}
+                    style={{
+                      backgroundColor: "#5F6BFF",
+                      color: "#E5E5E5",
+                      border: "2px solid #5F6BFF",
+                    }}
+                  >
                     Login
                   </button>
                 </div>
               )}
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{ mt: "45px", background: "#2D2D44", color: "#E5E5E5" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -204,6 +226,7 @@ function Navbar() {
                 <MenuItem
                   key={setting}
                   onClick={() => handleCloseUserMenu(setting)}
+                  sx={{ color: "#E5E5E5" }}
                 >
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
