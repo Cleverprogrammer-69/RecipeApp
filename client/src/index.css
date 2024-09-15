@@ -35,7 +35,7 @@ body {
 
 .welcome-container h1, .welcome-container h3 {
     -webkit-background-clip: text;
-    color: transparent;
+    color: white;
     background: linear-gradient(135deg, var(--primary), var(--background));
 }
 
